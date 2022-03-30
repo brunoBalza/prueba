@@ -1,0 +1,209 @@
+crear repositorio : clase 8
+
+[CLASE 5] INSTALAR GIT EN LINUX
+
+    apt-get es la forma en la que se instala software en linux
+
+        es RECOMENDABLE actualizar todos los paquetes antes de hacer alguna instalacion
+        apt-get apdate
+        apt-get ungrade
+
+        git 
+            me tira todos los comandos que puedo usar 
+
+            --version para saber la version que tengo
+
+[CLASE 7]   LINEA DE comandos
+
+    ls -al :esto es argunmento, q me muestre todo y lo coloqie en una lista
+
+        los archivos que EMPIEZAN con un punto son los OCULTOS
+
+    ls -l : me muestra todo menos los ocultos
+
+    cd p (apretamos TAB) nos va a mostrar todas las carpetas que comienzan con "p"
+
+    cat :te muestra en la consola de linux, el contendido del archivo seleccionado
+
+    history : me muestra todos los comandos que he usado hasta el momento
+
+    !72 : se repite el comando en la posiciopn 72 del historial
+
+    rm : borra el archivo seleccionado
+
+        tener mucho cuidado con este comando, porque borra todo lo que se le cruza sin preguntar, hasta el disco C
+
+    "comando" --help : este nos va a mostar todo lo que podemos hacer con el comando seleccionado
+
+[CLASE 8] CREAR REPOSITORIO Y PRIMER COMMIT
+
+        que significan los guines
+
+            - : significa q vamos a usar comando de iniciales, solo letras
+            -- : vamos a usar comando de palabras completas
+
+    Antes que nada no nos debemos olvidar de configurar git para que sepa quienes somos nosotros
+
+    git config: nos va a mostrar toda la configuracion
+
+    git --list: vemos la configuracion por defecto que tiene git
+
+    git --list --show-origin: vamos a ver donde estan las configuraciones guardadas
+
+    git config --global user.name "nombre": con este cambiamos el nombre
+
+    git config --global user.email "email": cambiamos el mail
+
+    -------------------------------------------------------------------------------------
+
+    git init : crea un repositorio
+
+        si hacemos ls -al vamos a ver una carpeta oculta ".git" que es donde va a estar la base de datos de los cambio 
+        atomicos que vamos a hacer
+
+    git status: con este vamos a ver el estado del proyecto al momento
+
+    git add "nombre del archivo" : le decimos a Git q tenemos nuevos archivos o carpetas que tenemos para agregar,
+        este paso es necesario para hacer el commit
+
+            este status del archivo se llama "stage" dentro del mundo de git
+
+    git rm "nombre del archivo" lo saco de la base de dato, lo borro del disco... PEEERO el sistema lo tiene todavia
+    en el cache, o sea en la memoria RAM
+
+    git rm --cached "nombre del archivo" : con esto lo borro de todos lados, hasta del cacho y lo vuelvo
+        a su estado inicial, antes del "git add"
+
+    git commit -m "mensaje del commit" : con esta hacemos el commit y le dejamos un mensaje
+        se puede hacer directamente sin el mensaje, pero es una mala practica, siempre se debe dejar un mensaje 
+        del commit q hacemos
+
+    git add . : este es para agregar todos los archivos de la carpeta en donde estoy trabajando
+
+    git log "nombre del archivos" : para ver la historia del archivo, 
+        vamos a ver que dice "commit "numero enorme" ese numero es el tag, del commit, codigo interno de git
+
+        vamos a ver q dice (HEAD -> master) esto significa que estamos en la version mas reciente       
+
+[CLASE 9] ANALIZAR CAMBIO EN LOS ARCHIVOS DEL PROYECTO CON GIT
+
+    git show "nombre del archivo": te muestra los cambio que han existido sobre un archivo
+
+    git diff "tag de alguna version" "tag de otra version": este sirve para ver las diferencias entre una version y otra
+
+[CLASE 11] VOLVER A LOS COMMITS anteriores
+
+    git reset "tag" --hard : vuelve absolutamente todo al tag deseado
+
+    git reset "tag" --soft: vuelve al tag deseado pero no toca lo que esta en staging
+
+    git log --stat: nos muestra el detalle de todo abolutament todos los cambios producidos en los commits
+
+    git checkout "tag": volvemos al commits deseado
+
+        git checkout master: volvemos al master
+
+[CLASE 12] RESET Y RM 
+
+    git rm --cached: Elimina los archivos de nuestro repositorio local y del área de staging,
+        pero los mantiene en nuestro disco duro. Básicamente le dice a Git que deje de trackear 
+        el historial de cambios de estos archivos, por lo que pasaran a un estado untracked.
+    
+    git rm --force: Elimina los archivos de Git y del disco duro. Git siempre guarda todo,
+        por lo que podemos acceder al registro de la existencia de los archivos, 
+        de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
+
+     RESET   
+
+        Este comando nos ayuda a volver en el tiempo. Pero no como git checkout que nos deja 
+        ir, mirar, pasear y volver. Con git reset volvemos al pasado sin la posibilidad de volver al futuro. 
+        Borramos la historia y la debemos sobreescribir. No hay vuelta atrás.   
+
+        Este comando es muy peligroso y debemos emplearlo solo en caso de emergencia.
+        Recuerda que debemos usar alguna de estas dos opciones
+
+            git reset --soft
+            git reset --hard
+
+[CLASE 13] FLUJO DE TRABAJO
+
+    git clone "url" (url del server remoto): esto es para traerse por ejemplo de github todo el repositorio
+        se traer master a tu directorio de trabajo, o sea la version actual 
+        y tambien se trae todo los cambio y las versiones al repositorio local
+
+    git push : esto es para mandar el repositorio final (head, master) al repositorio remoto (github)
+        si o si tengo q hacer el add y el commit, porq este comando solo lleva del repositorio local al remoto
+
+    git fetch: este es para traerme una version nueva del repositorio remoto PERO me lo traido al repositorio local
+        no es mi directorio de trabajo
+
+    git merge: esto es para que fusiones la ultima version de mi repositorio local con la que estoy trabajando
+        en mi directorio de trabajo, de esta forma puede unir lo que me traje con fetch y lo q estoy haciendo
+
+    git pull: este directamente sirve para saltear el fetch y el merge, es como traerme la ultima version del 
+        repositorio remoto y a la vez la fusiono con la que tengo el directorio de trabajo
+
+[CLASE 15] BRACHES DE GIT
+
+    la rama por defecto se llama MASTER esta es la principal, y el commit mas actual es el HEAD
+
+        cuando estamos perdidos en un commit antiguo, la forma de volver es haciendo un checkout al HEAD
+
+    Cuando uno crea una rama, lo que estamos haciendo en crear una copia del HEAD en otro lado, en otro rama, todos 
+    los cambios que hagamos dentro de esta rama, no van a afectar a la rama MASTER,
+    Los vamos a volver a fucionar con un el comando MERGE
+
+    git commit -am : este hacien automaticamente el add de los cambios que yo he realizado, y este solo funciona
+    si ya he hecho el add de los archivos q he modificado
+    
+[CLASE 16] MERGE
+
+    Un MERGE es un COMMIT a la rama en donde estamos haciendo la fusion, los cambio que lleva ese commit, son justamente
+    la rama nueva q fusionamos, o sea, que se crea un nuevo commit dentro de la rama 
+
+    cuando hacemos un Merge, lo que hacemos en traernos una version de una rama hacia la rama en donde estamos, es por
+    esto que tenemos que tener cuidado desde donde hacemos un merge, lo mas conveniente es hacerlo desde la rama que
+    queremos formar por completo,
+
+        ej, si tenemos 2 ramas (MASTER y CABECERA) tenemos que hacer el merge dentro del rama master, porque si lo hacemos
+        desde la rama cabecera se va a pasar todo lo qe tenemos en master, hacia cabecera y justamente se trabaja al 
+        reves
+
+        ej2 : si tenemos 2 rammas ( CABECERA y cabeceraJoke) lo idela sera traerse el proyecto experimental "joke" a 
+        la rama principal de la cabecera "CABECERA".
+
+        para entenderlo, se merge se hace en el HEAD
+
+    git merge "nombre rama" -m "mensaje"
+
+[CLASE 19] GITHUB
+
+    siempre crear un repositori con un READMe, es una muy buena practica hacerlo
+
+    git remote add origin : con esto le decimos a git que vamos a crear un origen remoto de nuestros archivos
+
+    git remote : nos muestra que tenemos un origen
+
+    git remote -v : nos muestra lo q tenemos listo para hacer fetch o push
+        -v siginifica "q sea verbal"
+
+    git push origin master : git enviele al origen la rama master
+
+                ! [rejected]        master -> master (fetch first)
+                error: failed to push some refs to 'https://github.com/brunoBalza/Mansoblog.git'
+                hint: Updates were rejected because the remote contains work that you do
+                hint: not have locally. This is usually caused by another repository pushing
+                hint: to the same ref. You may want to first integrate the remote changes
+                hint: (e.g., 'git pull ...') before pushing again.
+                hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+                    este error es porque en remoto ya tenemos este trabajo, o sea queremo enviar un master, cuando
+                    ya hay un master, 
+                    entonces lo que tenemos que hacer es traernos ese master de github, con "git pull"
+
+    git pull origin master --allow-unrelated-histories 
+
+        Traer la versión del repositorio remoto y hacer merge para crear un commit con los archivos de ambas partes.
+        Podemos usar git fetch y git merge o solo git pull con el flag --allow-unrelated-histories:
+
+        en otras palabras, fusionamos la rama de romoto, con la rama q tengo el local
