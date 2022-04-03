@@ -207,3 +207,25 @@ crear repositorio : clase 8
         Podemos usar git fetch y git merge o solo git pull con el flag --allow-unrelated-histories:
 
         en otras palabras, fusionamos la rama de romoto, con la rama q tengo el local
+
+[CLASE 21] CREAR LLAVE SSH
+
+    Generar una nueva llave SSH: (Cualquier sistema operativo)
+
+    ssh-keygen -t rsa -b 4096 -C "youremail@example.com"
+
+    Comprobar proceso y agregarlo (Windows)
+
+    eval $(ssh-agent - s)
+    ssh-add ~/.ssh/id_rsa
+
+[CLASE 22] CONECTAR LLAVE SSH CON GITHUB
+
+    si ya hemos creado un repositorio remoto con HTTPS, debemos poner un nuevo comando
+
+        git remote set-url origin "link de la llabe SSH"
+
+        con esto volvemos a cambiar el link del remoto
+
+    ahora para saber si funciona, solo hacemos cambios en el proyecto volvemos a hacer pull y push como corresponde, hasta tener los repositorios locales y remoto actualizados y sin conflictos
+    
