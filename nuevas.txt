@@ -156,6 +156,8 @@ crear repositorio : clase 8
     git commit -am : este hacien automaticamente el add de los cambios que yo he realizado, y este solo funciona
     si ya he hecho el add de los archivos q he modificado
     
+    git show-branch :nos muestra las ramas creada y la historia de estas
+
 [CLASE 16] MERGE
 
     Un MERGE es un COMMIT a la rama en donde estamos haciendo la fusion, los cambio que lleva ese commit, son justamente
