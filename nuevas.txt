@@ -228,4 +228,48 @@ crear repositorio : clase 8
         con esto volvemos a cambiar el link del remoto
 
     ahora para saber si funciona, solo hacemos cambios en el proyecto volvemos a hacer pull y push como corresponde, hasta tener los repositorios locales y remoto actualizados y sin conflictos
-    
+
+[CLASE 23] TAG y VERSIONES EN GIT Y GITHUB
+
+    git log --all --graph: es el grafico de como han ido siendo las ramas de todo el proyecto
+
+    git log --all --graph --decorate --online: lo mismo pero todo mas detallado
+
+    AGREGAR ALIAS A LOS COMANDOS LARGOS 
+
+    alias nombreDelAlias="git log --all --graph --decorate --oneline" (ejemplo con este comando largo)
+        de esta forma queda guardo todo ese comando en un alias, de esta forma solo ejecutamos el alias y se ejecuta todo el comando
+
+    crear TAG
+
+        los TAGs sirven para darle un nombre al commit, de esta forma se nos hace mas pedagico el proyecto
+
+        primero tenemos que saber que los numeros y letras que salen delante del commit cuando hacemos el "arbolito" es el hash del commit (el hash resumido, porque sabemos que hay uno mas largo),
+
+        debemos copiar ese hash resumido
+
+        git tag -a "v0.1" -m "mensaje que queramos hacer" "hash resumido"
+
+            "v0.1" es el tag justamente, podemos poner lo que queramos pero tenemos que entender las convenciones y las buenas practicas de esto, por eso debemos hacerlo correcto
+
+        git tag : nos va simplemente a mostrar los TAGs
+
+        git show-ref --tags : nos va mostrar a que hash pertenece cada tag
+
+        si bien le damos status nos va a decir que no hay nada por subir, DEBEMOS SI O SI HACER EL PUSH PARA QUE EN INTERNET QUEDE GUARDADO EL TAG, sino solo queda en local
+
+        despues de hacer el pull obvio, para no generar conflictos
+
+        git push --tags: asi subimos solo el tag
+
+        BORRAR TAG QUE NO QUEREMOS MAS
+
+            git tag -d nombreDelTag
+
+            aca debemos volver a hacer pull y push del tag
+
+            despues de todo este proceso, en github este tag va a seguir estando
+
+            git push :refs/tag/nombreDelTag
+
+[CLASE 24] MANEJO DE RAMAS EN GITHUB    
