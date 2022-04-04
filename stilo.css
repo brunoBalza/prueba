@@ -34,10 +34,16 @@ h1 {
 }
 .caja1 {
     font-size: 40px;
+    margin-bottom: 10px;
 }
 .caja2 {
     font-size: 30px;
+    margin-bottom: 10px;
 }
 .caja3 {
+    color: black;
     font-size: 20px;
+    background-color: coral;
+    border-radius: 10px;
+    padding: 5px;
 }
