@@ -207,3 +207,7 @@ crear repositorio : clase 8
         Podemos usar git fetch y git merge o solo git pull con el flag --allow-unrelated-histories:
 
         en otras palabras, fusionamos la rama de romoto, con la rama q tengo el local
+
+[CLASE 21] LLAVE SSH
+
+    no son por proyecto o repositorio, SON POR PERSONA
