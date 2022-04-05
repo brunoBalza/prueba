@@ -275,3 +275,38 @@ crear repositorio : clase 8
             git push :refs/tag/nombreDelTag
 
 [CLASE 24] MANEJO DE RAMAS EN GITHUB    
+
+[CLASE 25] CONFIGURAR COLABORADORES A UN REPOSITORIO    
+
+    TRAERSE UN REPOSITORIO PUBLICO
+
+    git clone "link del repo"
+
+    ahora si una persona clona ese repostorio, solo va a poder traerse el repo,
+    pero no va a poder subir nada porque no esta autorizada por el propietario o admins, para subir esas modificaciones
+
+    TENEMOS Q AGREGAR COLABORADORES
+
+        Settings del repo / Collaborators
+        podemos hacerlo con el mail si es publico, o directamente usamos el nombre de usuario de github de la persona
+
+[CLASE 26] PULL REQUEST
+
+    En un flujo de trabajo profesional la rama MASTER es la rama que se sube al servidor, esta destinada a los usuarios
+        por ende esta rama esta bloqueada, en esta rama no se desarrolla ni se hacen test
+
+        existe normalmente otra rama "devs" a la que si se le hacen los merge de todos los que trabajan en el desarrollo y por lo general hasta tiene un dominio tmb para hacer test a esta
+
+    entonces tenemos 2 ramas "master" una la original, la del servidor en si
+    y otra "master devs" que es una paso antes de hacer el merge a la original
+
+    ahora bien, existe otro paso antes de hacerle el merge a la rama "devs" que es para revisar el codigo
+        esta rama se llma "PULL REQUEST"
+        
+        este nos permite que otros miembros del equipo puedan ver el proyecto y aprobarlo, y al aprobarlos se autoejecuta el merge en "staging o devs"
+
+
+
+
+    
+
