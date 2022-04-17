@@ -308,8 +308,65 @@ crear repositorio : clase 8
         
         este nos permite que otros miembros del equipo puedan ver el proyecto y aprobarlo, y al aprobarlos se autoejecuta el merge en "staging o devs"
 
+[CLASE 28] PULL REQUEST
 
+    Pull request:
+    Es una funcionalidad de github (en gitlab llamada merge request y en bitbucket push request), en la que un colaborador pide que revisen sus cambios antes de hacer merge a una rama, normalmente master.
 
+    Al hacer un pull request se genera una conversación que pueden seguir los demás usuarios del repositorio, así como autorizar y rechazar los cambios.
 
+    El flujo del pull request es el siguiente
+
+    Se trabaja en una rama paralela los cambios que se desean (git checkout -b <rama>)
+    Se hace un commit a la rama (git commit -am '<Comentario>')
+    Se suben al remoto los cambios (git push origin <rama>)
+    En GitHub se hace el pull request comparando la rama master con la rama del fix.
+    Uno, o varios colaboradores revisan que el código sea correcto y dan feedback (en el chat del pull request)
+    El colaborador hace los cambios que desea en la rama y lo vuelve a subir al remoto (automáticamente jala la historia de los cambios que se hagan en la rama, en remoto)
+    Se aceptan los cambios en GitHub
+    Se hace merge a master desde GitHub
+    Importante: Cuando se modifica una rama, también se modifica el pull request.
+
+[CLASE 29] FORK
     
+    es una especie de bifurcacion del proyecto, en donde clono un repostorio externo de alguien SI O SI TIENE QUE SER UN REPO PUBLICO, SINO NO SE PUEDE
 
+    es una clonacion del estado actual del repo
+
+    esta clonacion se produce dentro de GITHUB no de git, o sea que se copia en el repostirotio de github de la persona que hace el fork, en absolutamente ningun momento se crea dentro de GIT, o sea, que lo voy a tener dentro del repo externo nada mas.
+    ahora si quiero trabajar con este, si o si me lo voy a tener q traer desde MI repo donde ya hice el fork a mi local
+
+    git clone "link del repo forkeado"
+
+    Los dueños del proyecto original 
+
+        Un fork es como una bifurcación del repositorio completo, tiene una historia en común, pero de repente se bifurca y pueden variar los cambios, ya que ambos proyectos podrán ser modificados en paralelo y para estar al día un colaborador tendrá que estar actualizando su fork con la información del original.
+
+        Al hacer un fork de un poryecto en GitHub, te conviertes en dueñ@ del repositorio fork, puedes trabajar en éste con todos los permisos, pero es un repositorio completamente diferente que el original, teniendo alguna historia en común   
+        
+        el colaborador que hizo el fork puede hacer un pull request al original, y este debe ser aprobado por el dueño, o el que hacer el merge al main    
+
+        Cuando trabajas en un proyecto que existe en diferentes repositorios remotos (normalmente a causa de un fork) es muy probable que desees poder trabajar con ambos repositorios, para ésto puedes crear un remoto adicional desde consola.
+
+[CLASE 30] HACER UN DEPLOYMENT A UN SERVER
+
+    Deploy es el proceso que permite enviar al servidor uno o varios archivos. Este servidor puede ser de prueba, desarrollo o producción.
+
+[CLASE 31] GITINGNORE
+
+    Una bna practica es evitar que los archivos binarios (imagenes, doc, etc) sean parte del repositorio
+
+    creamos un archivo nuevo y que vamos a guardar en la raiz de nuestro proyecto (root)
+        NO OLVIDARSE QUE VA SI O SI EN EL ROOT DEL REPO, SINO LA CAGAS
+        se va a llamar .gitignore 
+        es una lista de archivos que git va a ignorar
+    
+    ALTERNATIVA PARA NO SUBIR BINARION
+        vamos a usar el ejemplo de una imagen:
+        usamos herramientar donde subimos una imagen a internet y directamente ponemos el link que nos dio, de esa forma no subimos binarion al repo
+
+[CLASE 33] README.MD
+
+    MD : Mark Down es una especie de codigo en la que te permite cambiar ligeramente como se ve un archivo de texto 
+    
+    este archivo es para mostrarle al mundo de que se trata el repo, es como si fuese una pagina de internet dentro del repo, q se va a ver en github
