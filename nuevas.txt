@@ -370,3 +370,66 @@ crear repositorio : clase 8
     MD : Mark Down es una especie de codigo en la que te permite cambiar ligeramente como se ve un archivo de texto 
     
     este archivo es para mostrarle al mundo de que se trata el repo, es como si fuese una pagina de internet dentro del repo, q se va a ver en github
+
+[CLASE 34] GITHUB PAGES
+
+    es un servicio de hosting gratis de github
+
+    https://pages.github.com/
+
+        este tiene todo un tutorial de como configurarlo, lo q si es re importante, es qe el repositorio tenga si o si el mismo nombre de usuario de github y todo el enlace de github.io 
+
+            ej: brunoBalza.github.io -> asi deberia ser el nombre del repositorio
+
+    en los settings del repo dentro de github tenemos que ir a la pestaña de "guthub pages" y en "source" establecer la rama que queremos que sea visible en github pagues, es como si fuese la master de una desarrollo profesional
+
+[CLASE 35] REBASE
+
+    MUY MALA PRACTICA CUANDO LO USAMOS EN REPOSITORIOS REMOTOS, solo lo hacemos en local
+
+    esta funcion reescribe la historia de los repositorios
+
+    es pegar una rama X a una rama Y, la rama X desaparece pero esta toda la historia de esta en la rama Y,
+
+        en este ejemplo lo hacemos desde la rama Y, entonces la X se pega totalmente a la rama y
+
+        PROBLEMA CON LA HISTORIA 
+
+            si nosotros estabamos trabajando en la rama Y y queremos hacerle este rebase, pero a la vez tambien estabamos trabajando en la rama X posteriormente al terminar el trabajo de la rama Y
+            hacemos el rebase desde la rama Y, van a quedar los cambios de la rama Y como si fuesen posteriores a los de la rama X cuando sabemos que eso no es asi,
+                es por esto que es mala practica, nos cambia el curso de la historia
+
+
+            IMPORTANTE: PRIMERO HACER EL REBASE A LA RAMA QUE QUEREMOS DESAPARECER Y DESPUES A LA RAMA MASTER, sino la re cagamos y la unica manera de solucionarlo es con --reset
+
+[CLASE 36] STASH
+
+    git stash: mando las modificaciones a stash
+    
+    git stash list : me muestra los stash que he realizado
+
+        WIP : Work In Progress
+
+    git stash pop: Vuelve todo los guardado en stash
+
+        CUIDADO: si hacemos un stash, hay que estar muy atento de hacerle "pop" (abrirlo, traerlo) en otra rama, porque tendriamos un conflicto.
+    
+    es muy util cuando hacemos un stash y creamos otra rama distinta del trabajo y abrimos ahi el stash, es una manera de copiar y pegar los cambios que hicimos en el trabajo, sin que estos esten en el trabajo
+
+        git stash branch "nombre de la rama nueva" 
+
+            no es necesario hacer el paso de crear, ni pasarse, con este comando hacemos todo de forma directa
+
+    git stash drop: borra todo lo que hay en stash
+
+[CLASE 37] GIT CLEAN
+
+    git clean --dry-run: es un paso antes de borrar todo, nos va a mostrar los archivos que se van a borrar
+
+    git clean -f: borra los archivos
+
+    a tener en cuenta:
+
+        no borra carpetas, solo archivos, asiq las carpetas las tenes que borrar a mando
+
+        no borra los archivos de gitignore, este "gitignore" sirve para todos los comando de git
