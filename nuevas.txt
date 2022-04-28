@@ -405,6 +405,8 @@ crear repositorio : clase 8
 [CLASE 36] STASH
 
     git stash: mando las modificaciones a stash
+
+        al mandar las modificaciones a stash vamos a volver inmediatamante al commit anterior, parece q hubiesemos borrado todo pero no es asi, quedo en stash
     
     git stash list : me muestra los stash que he realizado
 
@@ -433,3 +435,15 @@ crear repositorio : clase 8
         no borra carpetas, solo archivos, asiq las carpetas las tenes que borrar a mando
 
         no borra los archivos de gitignore, este "gitignore" sirve para todos los comando de git
+
+[CLASE 38] CHERRY-PICK
+
+    vamos avanzando en una rama (no master) ya llevamos varios cambios, pero necesitamos SOLO UNO de esos en la rama master
+
+    git cherry-pick "hash" (tenemos que poner el hash del commit del cambio que queremos traer)
+
+        este comando lo tenemos que ejecutar desde la rama a donde queremos traernos ese commit, en este ejemplo seria la rama master,
+        
+        y para saber el hast del commit: dentro de la rama en donde TENEMOS el cambio que nos queremos llevar hasta la rama master, tenemos q ejecutar "git log --online" para que nos muestre el hash resumido ese es el que vamos a usar en el cherru-pick
+
+    CUIDADO: cuando hacemos el cherry-pick de la mejora que sea, para traernos una linea, cuando terminemos de trabajar en esa rama de la que hicimos el cherry-pick,cuando hagamos el merge con la rama master, esta nos va a traer un conflicto, porq va a haber una linea que va repetirse en las 2 ramas
