@@ -444,6 +444,69 @@ crear repositorio : clase 8
 
         este comando lo tenemos que ejecutar desde la rama a donde queremos traernos ese commit, en este ejemplo seria la rama master,
         
-        y para saber el hast del commit: dentro de la rama en donde TENEMOS el cambio que nos queremos llevar hasta la rama master, tenemos q ejecutar "git log --online" para que nos muestre el hash resumido ese es el que vamos a usar en el cherru-pick
+        y para saber el hast del commit: dentro de la rama en donde TENEMOS el cambio que nos queremos llevar hasta la rama master, tenemos q ejecutar "git log --online" para que nos muestre el hash resumido ese es el que vamos a usar en el cherru-pickcd
 
     CUIDADO: cuando hacemos el cherry-pick de la mejora que sea, para traernos una linea, cuando terminemos de trabajar en esa rama de la que hicimos el cherry-pick,cuando hagamos el merge con la rama master, esta nos va a traer un conflicto, porq va a haber una linea que va repetirse en las 2 ramas
+
+[CLASE 39] GIT RESET Y REFLOG
+
+    estos comando se usan cuando hemos generado cambios que nos han roto todo el proyecto, o cuando por alguna razon no podemos volver a los commits o versiones que teniamos, sea porq eliminamos archivos o eliminamos commits, en definitiva perdimos los avances de alguna u otra forma.
+
+    una vez roto el proyecto.
+
+        git reflog : este nos va a mostrar todos los cambios que hemos hecho hasta aquellos cambios que hemos borrado, nos va a mostrar en onde estuvo el head en algun momento,
+
+            porque git guarda absolutamente todos los cambios
+
+            cuando disparamos reflog, todos los cambios van a tener un hash, este es el q vamos a usar para hacer el reset
+
+        git reset --soft "hash" : nos a hacer volver al hash que indicamos pero nos va a dejar todo lo que hay en stage, asique este es medio peligroso, porq si tenemos archivos borrados NO los va a traer
+
+        git reset --HARD "hash" : este es mejor en estos casos, porque nos a resetear absolutamente TODO lo que hicimos dentro de Git, o sea va a traer hasta los archivos borrados
+
+            RESETEA LA HISTORIA
+
+[CLASE 40] GIT AMEND
+
+    reconstruir commits
+
+    SITUACION
+
+        Hago un commit de un cambio en especifico, pero resulta que NO REALICE ese cambio, o sea, hice primero el commit sin hacer nada, y DESPUES DEL COMMIT SI HAGO EL CAMBIO, por lo que en general deberia hacer un nuevo commit, pero esto alargaria la historia de git.
+
+        Entonces REALIZO el cambio, y hago un GIT ADD, porque tenemos que llevranos el cambio al stage, (paso que se hace si o si)
+
+        luego del add, HACEMOS EL GIT AMEND :
+
+            esto lo que hace es pegar los cambios que realizamos al commit ANTERIOR
+
+[CLASE 41] GREP y LOG
+
+    formas de buscar en el repo
+
+    con GREP podemos buscar la PALABRA
+
+        git grep "palabra": nos muestra como la usamos y la descripcion linea
+        git grep -n "palabra": nos muestra el numero de linea en donde usamos esta palabra
+        git grep -c "palabra": nos muestra en la cantidad de veces
+
+        ahora que pasa si queremos saber sobre una etiqueta de html, o sobre alguna palabra con signos
+            lo que se hace es buscar la etiqueta entra comillas : "<div>"
+    
+    Ahora queremos buscar algo dentro de los commits
+
+        git log -S "palabra" : nos va a mostrar solo los commits, donde usamos la palabra que buscamos EN LOS COMMITS
+
+[CLASE 42] Comandos y recursos
+
+    A continuación veremos una lista de comandos colaborativos para facilitar el trabajo remoto en GitHub:
+
+        git shortlog -sn: muestra cuantos commit han hecho cada miembro del equipo.
+        git shortlog -sn --all: muestra cuantos commit han hecho cada miembro del equipo, hasta los que han sido eliminados.
+        git shortlog -sn --all --no-merge: muestra cuantos commit ha hecho cada miembro, quitando los eliminados sin los merges.
+        git blame ARCHIVO: muestra quien hizo cada cosa línea por línea.
+        git COMANDO --help:muestra como funciona el comando.
+        git blame ARCHIVO -Llinea_inicial,linea_final: muestra quien hizo cada cosa línea por línea, indicándole desde qué línea ver. Ejemplo -L35,50.
+        git branch -r: se muestran todas las ramas remotas.
+        git branch -a: se muestran todas las ramas, tanto locales como remotas.
+
